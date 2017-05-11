@@ -22,10 +22,11 @@ app.use(errorHandlers.notFound);
 if (app.get('env') === 'development') {
   /* Development Error Handler - Prints stack trace */
   app.use(errorHandlers.developmentErrors);
+} else {
+  // production error handler
+  app.use(errorHandlers.productionErrors);
 }
 
-// production error handler
-app.use(errorHandlers.productionErrors);
 
 // done! we export it so we can start the site in start.js
 module.exports = app;

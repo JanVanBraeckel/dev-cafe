@@ -6,12 +6,16 @@ const topicSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
+    unique: true,
     required: 'Please enter a topic name!',
-    required: true,
   },
   description: {
     type: String,
     trim: true
+  },
+  chosen: {
+    type: Boolean,
+    default: false
   }
 });
 

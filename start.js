@@ -21,6 +21,7 @@ mongoose.connection.on('error', (err) => {
 
 // import all of our models
 require('./models/Topic');
+require('./models/Vote');
 
 // Start our app!
 const app = require('./app');
