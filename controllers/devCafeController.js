@@ -34,8 +34,8 @@ exports.close = async (req, res) => {
 
 exports.startVote = async (req, res) => {
   const existingVote = await tryGetExistingVote();
-  if (existingVote && existingVote.length > 0) {
-    await resendVote(req, res, existingVote[0]);
+  if (existingVote) {
+    await resendVote(req, res, existingVote);
   } else {
     const topics = await findRandomTopics(4);
     if (topics && topics.length > 0) {
@@ -145,5 +145,5 @@ const findRandomTopics = (amount = 4) => {
 };
 
 const tryGetExistingVote = async () => {
-  return await Vote.find({ finished: false });
+  return await Vote.findOne({ finished: false });
 };
